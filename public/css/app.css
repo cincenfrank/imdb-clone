@@ -10962,3 +10962,20 @@ a.text-dark:focus {
   }
 }
 
+.carousel-button {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-button.left {
+  left: 0;
+}
+
+.carousel-button.right {
+  right: 0;
+}
+
+.bottom-based {
+  bottom: -100px;
+}
+

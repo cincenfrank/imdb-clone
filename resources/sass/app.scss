@@ -1,8 +1,23 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+.carousel-button {
+    top: 50%;
+    transform: translateY(-50%);
+    &.left {
+        left: 0;
+    }
+    &.right {
+        right: 0;
+    }
+}
+
+.bottom-based {
+    bottom: -100px;
+}

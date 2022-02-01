@@ -14,7 +14,13 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = config('Movies');
+        // foreach ($movies as $index => $movie) {
+        //     $movie['id'] = $index;
+        //     $data[] = $movie;
+        // }
+        return view('welcome', ['movies' => $movies]);
+        // Modifica Welcome
     }
 
     /**

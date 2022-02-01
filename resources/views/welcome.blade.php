@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -68,7 +71,9 @@
 </head>
 
 <body>
-
+    <div id="app">
+        <main-vue :movie-list="{{ json_encode($movies) }}"></main-vue>
+    </div>
 
 
     <div class="flex-center position-ref full-height">

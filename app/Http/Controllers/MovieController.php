@@ -14,7 +14,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = config('Movies.php');
+        $movies = config('Movies');
         // foreach ($movies as $index => $movie) {
         //     $movie['id'] = $index;
         //     $data[] = $movie;

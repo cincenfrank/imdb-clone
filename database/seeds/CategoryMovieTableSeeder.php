@@ -4,6 +4,7 @@ use App\Category;
 use App\Movie;
 use Illuminate\Database\Seeder;
 
+
 class CategoryMovieTableSeeder extends Seeder
 {
     /**
@@ -16,9 +17,9 @@ class CategoryMovieTableSeeder extends Seeder
         $movies = Movie::all();
         $categories = Category::pluck("id");
         foreach ($movies as $movie) {
-            $randomCategory = rand(1, count($categories));
-            $categories->shuffle();
-            $movieCategories= $categories->slice($randomCategory);
+            $randomCategoryNumber = rand(1, count($categories));
+            $shuffleCategories=$categories->shuffle();
+            $movieCategories= $shuffleCategories->slice(0, $randomCategoryNumber); 
             $movie->categories()->attach($movieCategories);
         }
     }

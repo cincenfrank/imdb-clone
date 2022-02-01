@@ -71,9 +71,9 @@
 </head>
 
 <body>
-    <div id="app">
+    {{-- <div>
         <main-vue :movie-list="{{ json_encode($movies) }}"></main-vue>
-    </div>
+    </div> --}}
 
 
     <div class="flex-center position-ref full-height">

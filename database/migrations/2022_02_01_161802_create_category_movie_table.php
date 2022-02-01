@@ -34,7 +34,7 @@ class CreateCategoryMovieTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_post');
+        Schema::dropIfExists('category_movie');
         Schema::create('category_post', function (Blueprint $table) {
             $table->id();
 

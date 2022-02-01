@@ -24,6 +24,8 @@ Vue.component(
     require("./components/ExampleComponent.vue").default
 );
 Vue.component("main-vue", require("./components/Main.vue").default);
+Vue.component("slider", require("./components/Slider.vue").default);
+Vue.component("slider-list", require("./components/SliderList.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

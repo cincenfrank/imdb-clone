@@ -19,7 +19,7 @@ class MovieController extends Controller
         //     $movie['id'] = $index;
         //     $data[] = $movie;
         // }
-        return view('home', ['movies' => $movies]);
+        return view('welcome', ['movies' => $movies]);
         // Modifica Welcome
     }
 

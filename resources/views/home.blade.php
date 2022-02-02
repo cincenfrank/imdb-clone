@@ -19,6 +19,10 @@
                 </div>
             </div>
         </div>
+        <div id="app">
+            <main-vue :movie-list="{{ json_encode($movies) }}"></main-vue>
+        </div>
+
 
     </div>
 @endsection

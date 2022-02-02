@@ -5148,16 +5148,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      categoryQuery: []
+    };
+  },
   components: {
     Slider: _Slider_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     SliderList: _SliderList_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
-    movieList: Array
-  }
+    movieList: Array,
+    categoriesList: Array
+  },
+  methods: {
+    getMovies: function getMovies() {
+      window.axios.get("api/movies", {
+        params: {
+          category: this.categoryQuery.join()
+        }
+      }).then(function (resp) {
+        console.log(resp.data.data);
+      });
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -28698,6 +28735,65 @@ var render = function () {
         ),
       ]),
     ]),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "select",
+        {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.categoryQuery,
+              expression: "categoryQuery",
+            },
+          ],
+          staticClass: "form-select",
+          attrs: { multiple: "", "aria-label": "multiple select example" },
+          on: {
+            change: function ($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function (o) {
+                  return o.selected
+                })
+                .map(function (o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.categoryQuery = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            },
+          },
+        },
+        [
+          _c("option", { attrs: { selected: "" } }, [
+            _vm._v("Open this select menu"),
+          ]),
+          _vm._v(" "),
+          _vm._l(_vm.categoriesList, function (category) {
+            return _c(
+              "option",
+              { key: category.id, domProps: { value: category.id } },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(category.name) +
+                    "\n            "
+                ),
+              ]
+            )
+          }),
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", on: { click: _vm.getMovies } },
+        [_vm._v("Invia")]
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []
@@ -28747,7 +28843,7 @@ var render = function () {
                   "object-fit": "cover",
                   "object-position": "top",
                 },
-                attrs: { src: movie.thumb, alt: "" },
+                attrs: { src: movie.cover_path, alt: "" },
               }),
             ]
           )
@@ -28841,7 +28937,7 @@ var render = function () {
           _c("div", { staticClass: "col-md-4 h-100" }, [
             _c("img", {
               staticClass: "img-fluid rounded-start h-100",
-              attrs: { src: movie.thumb, alt: "..." },
+              attrs: { src: movie.cover_path, alt: "..." },
             }),
           ]),
           _vm._v(" "),
@@ -41473,8 +41569,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/cincenfrank/Developer/boolean/imdb-clone/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/cincenfrank/Developer/boolean/imdb-clone/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Boolean/Desktop/imdb-clone/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/Boolean/Desktop/imdb-clone/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

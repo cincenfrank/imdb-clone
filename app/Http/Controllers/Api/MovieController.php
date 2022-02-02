@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Category;
+use App\Http\Controllers\Controller;
 use App\Movie;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -13,20 +14,21 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // $movies = config('Movies');
-        $movies = Movie::all();
-        $categories = Category::all();
-        // foreach ($movies as $index => $movie) {
-        //     $movie['id'] = $index;
-        //     $data[] = $movie;
-        // }
-        return view('welcome', [
-            'movies' => $movies,
-            'categoriesList' =>$categories
-        ]);
-        // Modifica Welcome
+        $var = $request->category;
+        $categoryFilter = explode(',',$var); 
+        // dd($categoryFilter);
+        // $id=1;
+        $movies = Movie::with('categories');
+foreach($categoryFilter as $categoryId){
+
+    $movies->whereHas('categories',function (Builder $query) use($categoryId){
+        $query->where('categories.id',$categoryId);
+    });
+}
+        
+        return $movies->paginate();
     }
 
     /**
@@ -53,10 +55,10 @@ class MovieController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Movie $movie)
+    public function show($id)
     {
         //
     }
@@ -64,10 +66,10 @@ class MovieController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Movie $movie)
+    public function edit($id)
     {
         //
     }
@@ -76,10 +78,10 @@ class MovieController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -87,10 +89,10 @@ class MovieController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Movie  $movie
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Movie $movie)
+    public function destroy($id)
     {
         //
     }

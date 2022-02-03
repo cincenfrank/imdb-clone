@@ -17,17 +17,18 @@ class MovieController extends Controller
     public function index(Request $request)
     {
         $var = $request->category;
-        $categoryFilter = explode(',',$var); 
-        // dd($categoryFilter);
-        // $id=1;
         $movies = Movie::with('categories');
-foreach($categoryFilter as $categoryId){
 
-    $movies->whereHas('categories',function (Builder $query) use($categoryId){
-        $query->where('categories.id',$categoryId);
-    });
-}
-        
+        if (!$var) return $movies->paginate();
+
+        $categoryFilter = explode(',', $var);
+        foreach ($categoryFilter as $categoryId) {
+
+            $movies->whereHas('categories', function (Builder $query) use ($categoryId) {
+                $query->where('categories.id', $categoryId);
+            });
+        }
+
         return $movies->paginate();
     }
 

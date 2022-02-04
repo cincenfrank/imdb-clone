@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actor;
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Movie;
+use App\Pegi;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -15,7 +18,17 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::all();
+        $categories = Category::all();
+        $actors = Actor::all();
+        $pegis = Pegi::all();
+
+        return view("admin.movies.index", [
+            "movies" => $movies,
+            "categories" => $categories,
+            "actors" => $actors,
+            "pegis" => $pegis
+        ]);
     }
 
     /**
@@ -25,7 +38,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.movies.create");
     }
 
     /**

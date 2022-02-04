@@ -14,10 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-   
+
 
 
 Route::get('/', 'MovieController@index');
 Auth::routes();
 
+Route::middleware("auth")
+    ->namespace("Admin")
+    ->name("admin.")
+    ->prefix("admin")
+    ->group(function () {
+        Route::get("/", "HomeController@index")->name("home");
 
+        Route::resource("/movies", "MovieController");
+    });
